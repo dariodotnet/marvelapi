@@ -1,10 +1,11 @@
 namespace Marvel
 {
+    using Model;
+    using Newtonsoft.Json;
     using System;
     using System.IO;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
 
     internal static class ResponseExtension
     {
@@ -18,7 +19,18 @@ namespace Marvel
                     return reader.ReadToEnd();
                 }
             }
-            
+
+            var serializer = new JsonSerializer();
+
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var reader = new StreamReader(stream))
+            using (var json = new JsonTextReader(reader))
+            {
+                var error = serializer.Deserialize<MarvelError>(json);
+                if (error != null)
+                    throw error;
+            }
+
             throw new Exception("Oops! Something went wrong.");
         }
 
@@ -27,7 +39,7 @@ namespace Marvel
             if (response.IsSuccessStatusCode)
             {
                 var serializer = new JsonSerializer();
-                
+
                 using (var stream = await response.Content.ReadAsStreamAsync())
                 using (var reader = new StreamReader(stream))
                 using (var json = new JsonTextReader(reader))
@@ -35,7 +47,7 @@ namespace Marvel
                     return serializer.Deserialize<T>(json);
                 }
             }
-            
+
             throw new Exception("Oops! Something went wrong.");
         }
     }
