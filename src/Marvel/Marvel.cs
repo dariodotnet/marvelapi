@@ -5,23 +5,40 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class Marvel
+    public class Marvel : IMarvel
     {
-        private readonly IMarvelApi _api;
+        private const string BaseUri = "https://gateway.marvel.com/v1/public";
+        private IMarvelApi _api;
 
-        public Marvel(string publicKey, string privateKey)
+        public Marvel(string publicKey, string privateKey, bool bypassCertificate = false)
         {
-            var innerHandler = new HttpClientHandler();
-            var basicConnection = new HttpLoggingHandler("e8d935593f01ada9059e3c8f32b03cb0", "5cb13e19d0cf94e8f26e9ad912507af76f7f9cec", innerHandler);
+            InitializeApi(publicKey, privateKey, bypassCertificate);
+        }
+
+        public IMarvel Initialize(string publicKey, string privateKey, bool bypassCertificate = false) =>
+             InitializeApi(publicKey, privateKey, bypassCertificate);
+        
+        public Task<string> GetCharacters(CancellationToken token) => _api.GetCharacters(token);
+
+        private Marvel InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
+        {
+            HttpClientHandler innerHandler = null;
+            
+            if(bypassCertificate)
+                innerHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true
+                };
+            
+            var basicConnection = new HttpLoggingHandler(publicKey, privateKey, innerHandler);
 
             var basicClient = new HttpClient(basicConnection)
             {
-                BaseAddress = new Uri("https://gateway.marvel.com/v1/public")
+                BaseAddress = new Uri(BaseUri)
             };
 
             _api = Refit.RestService.For<IMarvelApi>(basicClient);
+            return this;
         }
-
-        public Task<string> GetCharacters(CancellationToken token) => _api.GetCharacters(token);
     }
 }
