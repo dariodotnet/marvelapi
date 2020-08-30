@@ -1,6 +1,8 @@
 ﻿namespace Marvel
 {
     using Model;
+    using Polly;
+    using Refit;
     using System;
     using System.Net.Http;
     using System.Threading;
@@ -10,21 +12,19 @@
     {
         private const string BaseUri = "https://gateway.marvel.com/v1/public";
         private IMarvelApi _api;
-        private IMarvelApiDto _apiDto;
 
         public Marvel(string publicKey, string privateKey, bool bypassCertificate = false)
         {
             InitializeApi(publicKey, privateKey, bypassCertificate);
         }
 
-        public IMarvel Initialize(string publicKey, string privateKey, bool bypassCertificate = false) =>
-             InitializeApi(publicKey, privateKey, bypassCertificate);
+        public Task<string> GetCharactersJson(CancellationToken token) =>
+            ExecuteApiJson(() => _api.GetCharacters(token));
 
-        public Task<string> GetCharacters(CancellationToken token) => _api.GetCharacters(token);
+        public Task<ApiDataWrapper> GetCharacters(CancellationToken token) =>
+            ExecuteApiCall<ApiDataWrapper>(() => _api.GetCharacters(token));
 
-        public Task<ApiDataWrapper> GetCharactersDto(CancellationToken token) => _apiDto.GetCharacters(token);
-
-        private Marvel InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
+        internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {
             HttpClientHandler innerHandler = null;
 
@@ -42,8 +42,31 @@
             };
 
             _api = Refit.RestService.For<IMarvelApi>(basicClient);
-            _apiDto = Refit.RestService.For<IMarvelApiDto>(basicClient);
-            return this;
+        }
+
+        internal Task<string> ExecuteApiJson(Func<Task<HttpResponseMessage>> method)
+        {
+            var retry = Policy.Handle<ApiException>()
+                .RetryAsync(async (ex, retries) => await Task.Delay(300).ConfigureAwait(false));
+
+            return retry.ExecuteAsync(async () =>
+            {
+                var response = await method();
+                return await response.Resolve();
+            });
+        }
+
+        internal Task<T> ExecuteApiCall<T>(Func<Task<HttpResponseMessage>> method)
+        {
+            var retry = Policy.Handle<ApiException>()
+                .RetryAsync(async (ex, retries) => await Task.Delay(300).ConfigureAwait(false));
+
+            return retry.ExecuteAsync(async () =>
+            {
+                var response = await method();
+
+                return await response.Resolve<T>();
+            });
         }
     }
 }
