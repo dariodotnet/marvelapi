@@ -6,7 +6,7 @@
     <Authors>Dario Alonso</Authors>
     <Product>Marvel</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Description>This nuget allow you to play with Marvel api. You need to get an api key and enjoy with your favorites comics, characters and beyond.</Description>
   </PropertyGroup>
 
