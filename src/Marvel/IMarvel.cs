@@ -6,9 +6,7 @@ namespace Marvel
 
     public interface IMarvel
     {
-        IMarvel Initialize(string publicKey, string privateKey, bool bypassCertificate = false);
-
-        Task<string> GetCharacters(CancellationToken token);
-        Task<ApiDataWrapper> GetCharactersDto(CancellationToken token);
+        Task<string> GetCharactersJson(CancellationToken token);
+        Task<ApiDataWrapper> GetCharacters(CancellationToken token);
     }
 }
