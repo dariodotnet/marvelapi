@@ -45,7 +45,7 @@ namespace Marvel
             var constants = $"ts={_timeStamp}&apikey={_publicKey}&hash={_hash}";
 
             request.RequestUri = absolutePath.Contains('?')
-                ? new Uri($"{absolutePath}{constants}")
+                ? new Uri($"{absolutePath}&{constants}")
                 : new Uri($"{absolutePath}?{constants}");
 
             var req = request;
