@@ -5,7 +5,7 @@ namespace Marvel.Tests
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class Tests
+    public class MarvelTests
     {
         private IMarvel _marvel;
 
@@ -18,7 +18,7 @@ namespace Marvel.Tests
         [Test]
         public async Task Api_Should_Connect_And_Get_Characters_Json()
         {
-            var characters = await _marvel.GetCharacters(new CancellationToken());
+            var characters = await _marvel.GetCharactersJson(new CancellationToken());
 
             Assert.AreNotEqual(characters, null);
         }
@@ -26,7 +26,7 @@ namespace Marvel.Tests
         [Test]
         public async Task Api_Should_Connect_And_Get_Characters()
         {
-            ApiDataWrapper characters = await _marvel.GetCharactersDto(new CancellationToken());
+            ApiDataWrapper characters = await _marvel.GetCharacters(new CancellationToken());
 
             Assert.AreNotEqual(characters, null);
         }
