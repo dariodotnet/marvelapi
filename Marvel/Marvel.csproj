@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.0-pre1</Version>
+    <Authors>Dario Alonso</Authors>
+    <Product>Marvel</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>This nuget allow you to play with Marvel api. You need to get an api key and enjoy with your favorites comics, characters and beyond.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Polly" Version="7.2.1" />
+    <PackageReference Include="refit" Version="5.1.67" />
+  </ItemGroup>
+
+</Project>
