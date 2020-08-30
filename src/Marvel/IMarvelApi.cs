@@ -1,12 +1,13 @@
 ﻿namespace Marvel
 {
     using Refit;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
     internal interface IMarvelApi
     {
         [Get("/characters")]
-        Task<string> GetCharacters(CancellationToken token);
+        Task<HttpResponseMessage> GetCharacters(CancellationToken token);
     }
 }
