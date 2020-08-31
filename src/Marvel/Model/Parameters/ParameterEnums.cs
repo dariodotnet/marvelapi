@@ -42,4 +42,15 @@
         ByIssueNumberDescending,
         ByModifiedDescending
     }
+
+    public enum ParameterEventOrder
+    {
+        None,
+        ByName,
+        ByStartDate,
+        ByModified,
+        ByNameDescending,
+        ByStartDateDescending,
+        ByModifiedDescending
+    }
 }

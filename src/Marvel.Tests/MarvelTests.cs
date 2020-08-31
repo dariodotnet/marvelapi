@@ -21,7 +21,7 @@ namespace Marvel.Tests
         {
             var characters = await _marvel.GetCharactersJson(new CancellationToken());
 
-            Assert.AreNotEqual(characters, null);
+            Assert.NotNull(characters);
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace Marvel.Tests
         {
             var characters = await _marvel.GetCharacters(new CancellationToken());
 
-            Assert.AreNotEqual(characters, null);
+            Assert.NotNull(characters);
         }
 
         [Test]
@@ -43,10 +43,10 @@ namespace Marvel.Tests
 
             var json = await _marvel.GetCharacterJson(first.Id, new CancellationToken());
 
-            Assert.AreNotEqual(json, null);
+            Assert.NotNull(json);
 
             var character = await _marvel.GetCharacter(first.Id, new CancellationToken());
-            Assert.AreNotEqual(json, null);
+            Assert.NotNull(json);
         }
 
         [Test]
@@ -62,6 +62,20 @@ namespace Marvel.Tests
             var comics = await _marvel.GetCharacterComics(first.Id, new CancellationToken());
 
             Assert.NotNull(comics);
+        }
+
+        [Test]
+        public async Task Api_Should_Get_EventList_For_First_Character()
+        {
+            var characters = await _marvel.GetCharacters(new CancellationToken());
+            Assert.AreNotEqual(characters, null);
+            var first = characters.Container.Results.FirstOrDefault();
+            var json = await _marvel.GetCharacterEventsJson(first.Id, new CancellationToken());
+
+            Assert.NotNull(json);
+
+            var events = await _marvel.GetCharacterEvents(first.Id, new CancellationToken());
+            Assert.NotNull(events);
         }
 
         [TestCase("", "")]
