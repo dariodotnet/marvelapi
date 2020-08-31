@@ -30,11 +30,11 @@
         public Task<MarvelResponse<Character>> GetCharacter(int characterId, CancellationToken token) =>
             ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetCharacter(characterId, token));
 
-        public Task<string> GetCharacterComicsJson(int characterId, CancellationToken token) =>
-            ExecuteApiJson(() => _api.GetCharacterComics(characterId, token));
+        public Task<string> GetCharacterComicsJson(int characterId, CancellationToken token, ComicQueryParameter parameter = null) =>
+            ExecuteApiJson(() => _api.GetCharacterComics(characterId, parameter, token));
 
-        public Task<MarvelResponse<Comic>> GetCharacterComics(int characterId, CancellationToken token) =>
-            ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetCharacterComics(characterId, token));
+        public Task<MarvelResponse<Comic>> GetCharacterComics(int characterId, CancellationToken token, ComicQueryParameter parameter = null) =>
+            ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetCharacterComics(characterId, parameter, token));
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {

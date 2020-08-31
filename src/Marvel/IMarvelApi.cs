@@ -15,6 +15,6 @@
         Task<HttpResponseMessage> GetCharacter(int characterId, CancellationToken token);
 
         [Get("/characters/{characterId}/comics")]
-        Task<HttpResponseMessage> GetCharacterComics(int characterId, CancellationToken token);
+        Task<HttpResponseMessage> GetCharacterComics(int characterId, ComicQueryParameter parameters, CancellationToken token);
     }
 }

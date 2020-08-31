@@ -17,27 +17,31 @@
         public int[] ComicArray { get; set; }
 
         [AliasAs("comics")]
-        public string Comics => ComicArray != null && ComicArray.Any() ? string.Join(",", ComicArray) : null;
+        public string Comics => ComicArray != null && ComicArray.Any()
+            ? string.Join(",", ComicArray) : null;
 
         public int[] SerieArray { get; set; }
 
         [AliasAs("series")]
-        public string Series => SerieArray != null && SerieArray.Any() ? string.Join(",", SerieArray) : null;
+        public string Series => SerieArray != null && SerieArray.Any()
+            ? string.Join(",", SerieArray) : null;
 
         public int[] EventArray { get; set; }
 
         [AliasAs("events")]
-        public string Events => EventArray != null && EventArray.Any() ? string.Join(",", EventArray) : null;
+        public string Events => EventArray != null && EventArray.Any()
+            ? string.Join(",", EventArray) : null;
 
         public int[] StoryArray { get; set; }
 
         [AliasAs("stories")]
-        public string Stories => StoryArray != null && StoryArray.Any() ? string.Join(",", StoryArray) : null;
+        public string Stories => StoryArray != null && StoryArray.Any()
+            ? string.Join(",", StoryArray) : null;
 
-        public ParameterOrder Order { get; set; }
+        public ParameterEnums CharacterOrder { get; set; }
 
         [AliasAs("orderBy")]
-        public string OrderBy => SetOrder(Order);
+        public string OrderBy => SetOrder(CharacterOrder);
 
         [AliasAs("limit")]
         public int Limit { get; set; } = 20;
@@ -45,17 +49,17 @@
         [AliasAs("offset")]
         public int Offset { get; set; }
 
-        private string SetOrder(ParameterOrder order)
+        private string SetOrder(ParameterEnums characterOrder)
         {
-            switch (order)
+            switch (characterOrder)
             {
-                case ParameterOrder.ByName:
+                case ParameterEnums.ByName:
                     return "name";
-                case ParameterOrder.ByModified:
+                case ParameterEnums.ByModified:
                     return "modified";
-                case ParameterOrder.ByNameDescending:
+                case ParameterEnums.ByNameDescending:
                     return "-name";
-                case ParameterOrder.ByModifiedDescending:
+                case ParameterEnums.ByModifiedDescending:
                     return "-modified";
                 default:
                     return null;
