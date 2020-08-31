@@ -74,4 +74,19 @@
     {
         None, ById, ByModified, ByIdDescending, ByModifiedDescending
     }
+
+    public enum ParameterCreatorOrder
+    {
+        None,
+        ByLastName,
+        ByFirstName,
+        ByMiddleName,
+        BySuffix,
+        ByModified,
+        ByLastNameDescending,
+        ByFirstNameDescending,
+        ByMiddleNameDescending,
+        BySuffixDescending,
+        ByModifiedDescending
+    }
 }

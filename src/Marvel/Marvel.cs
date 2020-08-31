@@ -90,6 +90,12 @@
         public Task<MarvelResponse<Character>> GetComicCharacters(int comicId, CancellationToken token, CharacterByComicQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetComicCharacters(comicId, parameter, token));
 
+        public Task<string> GetComicCreatorsJson(int comicId, CancellationToken token, CreatorQueryParameter parameter = null) =>
+            ExecuteApiJson(() => _api.GetComicCreators(comicId, parameter, token));
+
+        public Task<MarvelResponse<Creator>> GetComicCreators(int comicId, CancellationToken token, CreatorQueryParameter parameter = null) =>
+            ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetComicCreators(comicId, parameter, token));
+
         #endregion
 
 
