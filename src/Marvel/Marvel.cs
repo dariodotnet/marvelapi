@@ -13,9 +13,21 @@
         private const string BaseUri = "https://gateway.marvel.com/v1/public";
         private IMarvelApi _api;
 
+        public string PublicKey { get; private set; }
+        public string PrivateKey { get; private set; }
+        public bool BypassCertificate { get; private set; }
+
         public Marvel(string publicKey, string privateKey, bool bypassCertificate = false)
         {
-            InitializeApi(publicKey, privateKey, bypassCertificate);
+            PublicKey = publicKey;
+            PrivateKey = privateKey;
+            BypassCertificate = bypassCertificate;
+            InitializeApi(PublicKey, PrivateKey, BypassCertificate);
+        }
+
+        public Marvel(IMarvel customInitialization)
+        {
+            InitializeApi(customInitialization.PublicKey, customInitialization.PrivateKey, customInitialization.BypassCertificate);
         }
 
         public Task<string> GetCharactersJson(CancellationToken token, CharacterQueryParameter parameter = null) =>

@@ -6,6 +6,10 @@ namespace Marvel
 
     public interface IMarvel
     {
+        string PublicKey { get; }
+        string PrivateKey { get; }
+        bool BypassCertificate { get; }
+
         Task<string> GetCharactersJson(CancellationToken token, CharacterQueryParameter parameter = null);
         Task<MarvelResponse<Character>> GetCharacters(CancellationToken token, CharacterQueryParameter parameter = null);
 
