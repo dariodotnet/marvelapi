@@ -77,6 +77,12 @@
         public string Creators => CreatorsArray != null && CreatorsArray.Any()
             ? string.Join(",", CreatorsArray) : null;
 
+        public int[] CharacterArray { get; set; }
+
+        [AliasAs("characters")]
+        public string Characters => CharacterArray != null && CharacterArray.Any()
+            ? string.Join(",", CharacterArray) : null;
+
         public int[] SerieArray { get; set; }
 
         [AliasAs("series")]

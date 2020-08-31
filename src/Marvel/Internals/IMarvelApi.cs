@@ -22,8 +22,11 @@
 
         [Get("/characters/{characterId}/series")]
         Task<HttpResponseMessage> GetCharacterSeries(int characterId, SerieQueryParameter parameters, CancellationToken token);
-        
+
         [Get("/characters/{characterId}/stories")]
         Task<HttpResponseMessage> GetCharacterStories(int characterId, StoryQueryParameter parameters, CancellationToken token);
+
+        [Get("/comics")]
+        Task<HttpResponseMessage> GetComics(ComicQueryParameter parameters, CancellationToken token);
     }
 }
