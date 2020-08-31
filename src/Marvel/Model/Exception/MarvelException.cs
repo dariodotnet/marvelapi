@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class MarvelError : Exception
+    public class MarvelException : Exception
     {
-        public MarvelError(string message, string code) : base(message)
+        public MarvelException(string message, string code) : base(message)
         {
             this.message = message;
             this.code = code;

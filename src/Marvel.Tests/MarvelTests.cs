@@ -72,13 +72,13 @@ namespace Marvel.Tests
             var marvel = new Marvel(publicKey, privateKey);
 
             var exceptionJson = Assert
-                .ThrowsAsync<MarvelError>(async () => await marvel.GetCharactersJson(new CancellationToken()));
+                .ThrowsAsync<MarvelException>(async () => await marvel.GetCharactersJson(new CancellationToken()));
 
             Assert.That(exceptionJson.code.Equals(ErrorConstants.Code.InvalidCredentials));
             Assert.That(exceptionJson.message.Equals(ErrorConstants.Message.ApiKeyInvalid));
 
             var exception = Assert
-                .ThrowsAsync<MarvelError>(async () => await marvel.GetCharacters(new CancellationToken()));
+                .ThrowsAsync<MarvelException>(async () => await marvel.GetCharacters(new CancellationToken()));
 
             Assert.That(exception.code.Equals(ErrorConstants.Code.InvalidCredentials));
             Assert.That(exception.message.Equals(ErrorConstants.Message.ApiKeyInvalid));
@@ -90,13 +90,13 @@ namespace Marvel.Tests
             var marvel = new Marvel(publicKey, privateKey);
 
             var exceptionJson = Assert
-                .ThrowsAsync<MarvelError>(async () => await marvel.GetCharactersJson(new CancellationToken()));
+                .ThrowsAsync<MarvelException>(async () => await marvel.GetCharactersJson(new CancellationToken()));
 
             Assert.That(exceptionJson.code.Equals(ErrorConstants.Code.InvalidCredentials));
             Assert.That(exceptionJson.message.Equals(ErrorConstants.Message.ApiInvalidHash));
 
             var exception = Assert
-                .ThrowsAsync<MarvelError>(async () => await marvel.GetCharacters(new CancellationToken()));
+                .ThrowsAsync<MarvelException>(async () => await marvel.GetCharacters(new CancellationToken()));
 
             Assert.That(exception.code.Equals(ErrorConstants.Code.InvalidCredentials));
             Assert.That(exception.message.Equals(ErrorConstants.Message.ApiInvalidHash));
@@ -108,13 +108,13 @@ namespace Marvel.Tests
             var parameter = new CharacterQueryParameter { Limit = 250 };
 
             var exceptionJson = Assert
-                .ThrowsAsync<MarvelError>(async () => await _marvel.GetCharactersJson(new CancellationToken(), parameter));
+                .ThrowsAsync<MarvelException>(async () => await _marvel.GetCharactersJson(new CancellationToken(), parameter));
 
             Assert.That(exceptionJson.code.Equals(ErrorConstants.Code.InvalidParameter));
             Assert.That(exceptionJson.status.Equals(ErrorConstants.Reason.InvalidLimit));
 
             var exception = Assert
-                .ThrowsAsync<MarvelError>(async () => await _marvel.GetCharacters(new CancellationToken(), parameter));
+                .ThrowsAsync<MarvelException>(async () => await _marvel.GetCharacters(new CancellationToken(), parameter));
 
             Assert.That(exception.code.Equals(ErrorConstants.Code.InvalidParameter));
             Assert.That(exception.status.Equals(ErrorConstants.Reason.InvalidLimit));
@@ -126,13 +126,13 @@ namespace Marvel.Tests
             var parameter = new CharacterQueryParameter { Limit = 0 };
 
             var exceptionJson = Assert
-                .ThrowsAsync<MarvelError>(async () => await _marvel.GetCharactersJson(new CancellationToken(), parameter));
+                .ThrowsAsync<MarvelException>(async () => await _marvel.GetCharactersJson(new CancellationToken(), parameter));
 
             Assert.That(exceptionJson.code.Equals(ErrorConstants.Code.InvalidParameter));
             Assert.That(exceptionJson.status.Equals(ErrorConstants.Reason.InvalidZeroLimit));
 
             var exception = Assert
-                .ThrowsAsync<MarvelError>(async () => await _marvel.GetCharacters(new CancellationToken(), parameter));
+                .ThrowsAsync<MarvelException>(async () => await _marvel.GetCharacters(new CancellationToken(), parameter));
 
             Assert.That(exception.code.Equals(ErrorConstants.Code.InvalidParameter));
             Assert.That(exception.status.Equals(ErrorConstants.Reason.InvalidZeroLimit));
@@ -142,7 +142,7 @@ namespace Marvel.Tests
         public async Task Api_Should_Throw_MarvelError_CharacterNotFound()
         {
             var exceptionJson = Assert
-                .ThrowsAsync<MarvelError>(async () => await _marvel.GetCharacter(10, new CancellationToken()));
+                .ThrowsAsync<MarvelException>(async () => await _marvel.GetCharacter(10, new CancellationToken()));
 
             Assert.That(exceptionJson.code.Equals(ErrorConstants.Code.NotFound));
             Assert.That(exceptionJson.status.Equals(ErrorConstants.Reason.CharacterNotFound));

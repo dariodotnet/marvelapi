@@ -38,7 +38,7 @@
         public string Stories => StoryArray != null && StoryArray.Any()
             ? string.Join(",", StoryArray) : null;
 
-        public ParameterEnums CharacterOrder { get; set; }
+        public ParameterCharacterOrder CharacterOrder { get; set; }
 
         [AliasAs("orderBy")]
         public string OrderBy => SetOrder(CharacterOrder);
@@ -49,17 +49,17 @@
         [AliasAs("offset")]
         public int Offset { get; set; }
 
-        private string SetOrder(ParameterEnums characterOrder)
+        private string SetOrder(ParameterCharacterOrder characterOrder)
         {
             switch (characterOrder)
             {
-                case ParameterEnums.ByName:
+                case ParameterCharacterOrder.ByName:
                     return "name";
-                case ParameterEnums.ByModified:
+                case ParameterCharacterOrder.ByModified:
                     return "modified";
-                case ParameterEnums.ByNameDescending:
+                case ParameterCharacterOrder.ByNameDescending:
                     return "-name";
-                case ParameterEnums.ByModifiedDescending:
+                case ParameterCharacterOrder.ByModifiedDescending:
                     return "-modified";
                 default:
                     return null;

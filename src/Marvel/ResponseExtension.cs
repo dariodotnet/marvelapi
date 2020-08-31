@@ -48,7 +48,7 @@ namespace Marvel
             using (var reader = new StreamReader(stream))
             using (var json = new JsonTextReader(reader))
             {
-                var error = serializer.Deserialize<MarvelError>(json);
+                var error = serializer.Deserialize<MarvelException>(json);
                 if (error != null)
                     throw error;
             }
