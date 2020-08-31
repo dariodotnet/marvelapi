@@ -19,5 +19,8 @@
 
         [Get("/characters/{characterId}/events")]
         Task<HttpResponseMessage> GetCharacterEvents(int characterId, EventQueryParameter parameters, CancellationToken token);
+
+        [Get("/characters/{characterId}/series")]
+        Task<HttpResponseMessage> GetCharacterSeries(int characterId, SerieQueryParameter parameters, CancellationToken token);
     }
 }

@@ -53,4 +53,20 @@
         ByStartDateDescending,
         ByModifiedDescending
     }
+
+    public enum ParameterSeriesType
+    {
+        None, Collection, OneShot, Limited, OnGoing
+    }
+
+    public enum ParameterSeriesOrder
+    {
+        None,
+        ByTitle,
+        ByModified,
+        ByStartYear,
+        ByTitleDescending,
+        ByModifiedDescending,
+        ByStartYearDescending
+    }
 }
