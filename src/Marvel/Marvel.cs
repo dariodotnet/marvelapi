@@ -21,8 +21,14 @@
         public Task<string> GetCharactersJson(CancellationToken token, CharacterQueryParameter parameter = null) =>
             ExecuteApiJson(() => _api.GetCharacters(parameter, token));
 
-        public Task<ApiDataWrapper> GetCharacters(CancellationToken token, CharacterQueryParameter parameter = null) =>
-            ExecuteApiCall<ApiDataWrapper>(() => _api.GetCharacters(parameter, token));
+        public Task<MarvelResponse<Character>> GetCharacters(CancellationToken token, CharacterQueryParameter parameter = null) =>
+            ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetCharacters(parameter, token));
+
+        public Task<string> GetCharacterJson(int characterId, CancellationToken token) =>
+            ExecuteApiJson(() => _api.GetCharacter(characterId, token));
+
+        public Task<MarvelResponse<Character>> GetCharacter(int characterId, CancellationToken token) =>
+            ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetCharacter(characterId, token));
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {

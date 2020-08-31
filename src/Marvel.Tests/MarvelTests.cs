@@ -2,6 +2,7 @@ namespace Marvel.Tests
 {
     using Model;
     using NUnit.Framework;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -26,9 +27,26 @@ namespace Marvel.Tests
         [Test]
         public async Task Api_Should_Connect_And_Get_Characters()
         {
-            ApiDataWrapper characters = await _marvel.GetCharacters(new CancellationToken());
+            var characters = await _marvel.GetCharacters(new CancellationToken());
 
             Assert.AreNotEqual(characters, null);
+        }
+
+        [Test]
+        public async Task Api_Should_Get_FirstCharacter()
+        {
+            var characters = await _marvel.GetCharacters(new CancellationToken());
+
+            Assert.AreNotEqual(characters, null);
+
+            var first = characters.Container.Results.FirstOrDefault();
+
+            var json = await _marvel.GetCharacterJson(first.Id, new CancellationToken());
+
+            Assert.AreNotEqual(json, null);
+
+            var character = await _marvel.GetCharacter(first.Id, new CancellationToken());
+            Assert.AreNotEqual(json, null);
         }
 
         [TestCase("", "")]
@@ -103,6 +121,16 @@ namespace Marvel.Tests
 
             Assert.That(exception.code.Equals(ErrorConstants.Code.InvalidParameter));
             Assert.That(exception.status.Equals(ErrorConstants.Reason.InvalidZeroLimit));
+        }
+
+        [Test]
+        public async Task Api_Should_Throw_MarvelError_CharacterNotFound()
+        {
+            var exceptionJson = Assert
+                .ThrowsAsync<MarvelError>(async () => await _marvel.GetCharacter(10, new CancellationToken()));
+
+            Assert.That(exceptionJson.code.Equals(ErrorConstants.Code.NotFound));
+            Assert.That(exceptionJson.status.Equals(ErrorConstants.Reason.CharacterNotFound));
         }
     }
 }

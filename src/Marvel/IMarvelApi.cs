@@ -10,5 +10,8 @@
     {
         [Get("/characters")]
         Task<HttpResponseMessage> GetCharacters(CharacterQueryParameter parameters, CancellationToken token);
+
+        [Get("/characters/{characterId}")]
+        Task<HttpResponseMessage> GetCharacter(int characterId, CancellationToken token);
     }
 }
