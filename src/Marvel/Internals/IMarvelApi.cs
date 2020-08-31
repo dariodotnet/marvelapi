@@ -28,5 +28,8 @@
 
         [Get("/comics")]
         Task<HttpResponseMessage> GetComics(ComicQueryParameter parameters, CancellationToken token);
+
+        [Get("/comics/{comicId}")]
+        Task<HttpResponseMessage> GetComic(int comicId, CancellationToken token);
     }
 }

@@ -26,5 +26,8 @@ namespace Marvel
 
         Task<string> GetComicsJson(CancellationToken token, ComicQueryParameter parameters = null);
         Task<MarvelResponse<Comic>> GetComics(CancellationToken token, ComicQueryParameter parameters = null);
+
+        Task<string> GetComicJson(int comicId, CancellationToken token);
+        Task<MarvelResponse<Comic>> GetComic(int comicId, CancellationToken token);
     }
 }

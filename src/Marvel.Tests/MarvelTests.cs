@@ -115,6 +115,27 @@ namespace Marvel.Tests
             Assert.NotNull(comics);
         }
 
+        [Test]
+        public async Task Api_Should_Get_FirstComic()
+        {
+            var comics = await _marvel.GetComics(new CancellationToken());
+            Assert.NotNull(comics);
+
+            var first = comics.Container.Results.FirstOrDefault();
+
+            Assert.NotNull(first);
+
+            var json = await _marvel.GetComic(first.Id, new CancellationToken());
+
+            Assert.NotNull(json);
+
+            var comic = await _marvel.GetComic(first.Id, new CancellationToken());
+
+            Assert.NotNull(comic);
+        }
+
+
+
         [TestCase("", "")]
         [TestCase("FORCEERROR", "PRIVATEFORCEERROR")]
         [TestCase("e8d935593f01ada9059e3c8f32b03", "5cb13e19d0cf94e8f26e9ad912507af76f7f9c")]
