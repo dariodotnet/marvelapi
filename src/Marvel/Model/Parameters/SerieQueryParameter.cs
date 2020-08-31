@@ -58,6 +58,11 @@
             ? string.Join(",", GetFormat(FormatArray))
             : null;
 
+        public ParameterSeriesOrder SeriesOrder { get; set; }
+
+        [AliasAs("orderBy")]
+        public string OrderBy => SetOrder(SeriesOrder);
+
         [AliasAs("limit")]
         public int Limit { get; set; } = 20;
 
@@ -117,6 +122,27 @@
             }
 
             return result;
+        }
+        
+        private string SetOrder(ParameterSeriesOrder seriesOrder)
+        {
+            switch (seriesOrder)
+            {
+                case ParameterSeriesOrder.ByTitle:
+                    return "title";
+                case ParameterSeriesOrder.ByModified:
+                    return "modified";
+                case ParameterSeriesOrder.ByStartYear:
+                    return "startYear";
+                case ParameterSeriesOrder.ByTitleDescending:
+                    return "-title";
+                case ParameterSeriesOrder.ByModifiedDescending:
+                    return "-modified";
+                case ParameterSeriesOrder.ByStartYearDescending:
+                    return "-startYear";
+                default:
+                    return null;
+            }
         }
     }
 }
