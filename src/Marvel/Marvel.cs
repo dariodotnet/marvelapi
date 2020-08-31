@@ -18,11 +18,11 @@
             InitializeApi(publicKey, privateKey, bypassCertificate);
         }
 
-        public Task<string> GetCharactersJson(CancellationToken token) =>
-            ExecuteApiJson(() => _api.GetCharacters(token));
+        public Task<string> GetCharactersJson(CancellationToken token, CharacterQueryParameter parameter = null) =>
+            ExecuteApiJson(() => _api.GetCharacters(parameter, token));
 
-        public Task<ApiDataWrapper> GetCharacters(CancellationToken token) =>
-            ExecuteApiCall<ApiDataWrapper>(() => _api.GetCharacters(token));
+        public Task<ApiDataWrapper> GetCharacters(CancellationToken token, CharacterQueryParameter parameter = null) =>
+            ExecuteApiCall<ApiDataWrapper>(() => _api.GetCharacters(parameter, token));
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {

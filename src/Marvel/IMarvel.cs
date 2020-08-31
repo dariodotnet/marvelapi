@@ -6,7 +6,7 @@ namespace Marvel
 
     public interface IMarvel
     {
-        Task<string> GetCharactersJson(CancellationToken token);
-        Task<ApiDataWrapper> GetCharacters(CancellationToken token);
+        Task<string> GetCharactersJson(CancellationToken token, CharacterQueryParameter parameter = null);
+        Task<ApiDataWrapper> GetCharacters(CancellationToken token, CharacterQueryParameter parameter = null);
     }
 }
