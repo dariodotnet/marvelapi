@@ -4,7 +4,7 @@
     using System;
     using System.Linq;
 
-    public class CharacterQueryParameter
+    public class CharacterByComicQueryParameter
     {
         [AliasAs("name")]
         public string Name { get; set; }
@@ -13,12 +13,6 @@
         public string NameStartsWith { get; set; }
 
         public DateTime? ModifiedSince { get; set; }
-
-        public int[] ComicArray { get; set; }
-
-        [AliasAs("comics")]
-        public string Comics => ComicArray != null && ComicArray.Any()
-            ? string.Join(",", ComicArray) : null;
 
         public int[] SerieArray { get; set; }
 
@@ -65,5 +59,14 @@
                     return null;
             }
         }
+    }
+
+    public class CharacterQueryParameter : CharacterByComicQueryParameter
+    {
+        public int[] ComicArray { get; set; }
+
+        [AliasAs("comics")]
+        public string Comics => ComicArray != null && ComicArray.Any()
+            ? string.Join(",", ComicArray) : null;
     }
 }

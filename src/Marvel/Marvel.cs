@@ -84,10 +84,10 @@
         public Task<MarvelResponse<Comic>> GetComic(int comicId, CancellationToken token) =>
             ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetComic(comicId, token));
 
-        public Task<string> GetComicCharactersJson(int comicId, CancellationToken token, CharacterQueryParameter parameter = null) =>
+        public Task<string> GetComicCharactersJson(int comicId, CancellationToken token, CharacterByComicQueryParameter parameter = null) =>
             ExecuteApiJson(() => _api.GetComicCharacters(comicId, parameter, token));
 
-        public Task<MarvelResponse<Character>> GetComicCharacters(int comicId, CancellationToken token, CharacterQueryParameter parameter = null) =>
+        public Task<MarvelResponse<Character>> GetComicCharacters(int comicId, CancellationToken token, CharacterByComicQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetComicCharacters(comicId, parameter, token));
 
         #endregion

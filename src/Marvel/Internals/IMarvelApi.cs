@@ -33,6 +33,6 @@
         Task<HttpResponseMessage> GetComic(int comicId, CancellationToken token);
 
         [Get("/comics/{comicId}/characters")]
-        Task<HttpResponseMessage> GetComicCharacters(int comicId, CharacterQueryParameter parameter, CancellationToken token);
+        Task<HttpResponseMessage> GetComicCharacters(int comicId, CharacterByComicQueryParameter parameter, CancellationToken token);
     }
 }
