@@ -4,6 +4,15 @@
     using System;
     using System.Linq;
 
+    public class CharacterQueryParameter : CharacterByComicQueryParameter
+    {
+        public int[] ComicArray { get; set; }
+
+        [AliasAs("comics")]
+        public string Comics => ComicArray != null && ComicArray.Any()
+            ? string.Join(",", ComicArray) : null;
+    }
+
     public class CharacterByComicQueryParameter
     {
         [AliasAs("name")]
@@ -59,14 +68,5 @@
                     return null;
             }
         }
-    }
-
-    public class CharacterQueryParameter : CharacterByComicQueryParameter
-    {
-        public int[] ComicArray { get; set; }
-
-        [AliasAs("comics")]
-        public string Comics => ComicArray != null && ComicArray.Any()
-            ? string.Join(",", ComicArray) : null;
     }
 }
