@@ -30,6 +30,8 @@
             InitializeApi(customInitialization.PublicKey, customInitialization.PrivateKey, customInitialization.BypassCertificate);
         }
 
+        #region CHARACTERS
+
         public Task<string> GetCharactersJson(CancellationToken token, CharacterQueryParameter parameter = null) =>
             ExecuteApiJson(() => _api.GetCharacters(parameter, token));
 
@@ -66,6 +68,10 @@
         public Task<MarvelResponse<Story>> GetCharacterStories(int characterId, CancellationToken token, StoryQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetCharacterStories(characterId, parameters, token));
 
+        #endregion
+
+        #region COMICS
+
         public Task<string> GetComicsJson(CancellationToken token, ComicQueryParameter parameters = null) =>
             ExecuteApiJson(() => _api.GetComics(parameters, token));
 
@@ -77,6 +83,16 @@
 
         public Task<MarvelResponse<Comic>> GetComic(int comicId, CancellationToken token) =>
             ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetComic(comicId, token));
+
+        public Task<string> GetComicCharactersJson(int comicId, CancellationToken token, CharacterQueryParameter parameter = null) =>
+            ExecuteApiJson(() => _api.GetComicCharacters(comicId, parameter, token));
+
+        public Task<MarvelResponse<Character>> GetComicCharacters(int comicId, CancellationToken token, CharacterQueryParameter parameter = null) =>
+            ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetComicCharacters(comicId, parameter, token));
+
+        #endregion
+
+
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {

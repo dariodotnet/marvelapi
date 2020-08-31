@@ -134,6 +134,22 @@ namespace Marvel.Tests
             Assert.NotNull(comic);
         }
 
+        [Test]
+        public async Task Api_Should_Get_Characters_For_FirstComic()
+        {
+            var comics = await _marvel.GetComics(new CancellationToken());
+            Assert.NotNull(comics);
+
+            var first = comics.Container.Results.FirstOrDefault();
+            Assert.NotNull(first);
+
+            var json = await _marvel.GetComicCharactersJson(first.Id, new CancellationToken());
+            Assert.NotNull(json);
+
+            var character = await _marvel.GetComicCharacters(first.Id, new CancellationToken());
+            Assert.NotNull(character);
+        }
+
 
 
         [TestCase("", "")]
