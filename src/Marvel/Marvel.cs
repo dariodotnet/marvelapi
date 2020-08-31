@@ -45,6 +45,15 @@
         public Task<string> GetCharacterSeriesJson(int characterId, CancellationToken token, SerieQueryParameter parameters = null) =>
             ExecuteApiJson(() => _api.GetCharacterSeries(characterId, parameters, token));
 
+        public Task<MarvelResponse<Serie>> GetCharacterSeries(int characterId, CancellationToken token, SerieQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Serie>>(() => _api.GetCharacterSeries(characterId, parameters, token));
+
+        public Task<string> GetCharacterStoriesJson(int characterId, CancellationToken token, StoryQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetCharacterStories(characterId, parameters, token));
+
+        public Task<MarvelResponse<Story>> GetCharacterStories(int characterId, CancellationToken token, StoryQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetCharacterStories(characterId, parameters, token));
+
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {
             HttpClientHandler innerHandler = null;

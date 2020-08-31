@@ -69,4 +69,9 @@
         ByModifiedDescending,
         ByStartYearDescending
     }
+
+    public enum ParameterStoryOrder
+    {
+        None, ById, ByModified, ByIdDescending, ByModifiedDescending
+    }
 }

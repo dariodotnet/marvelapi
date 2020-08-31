@@ -88,8 +88,22 @@ namespace Marvel.Tests
 
             Assert.NotNull(json);
 
-            var series = await _marvel.GetCharacterSeriesJson(first.Id, new CancellationToken());
+            var series = await _marvel.GetCharacterSeries(first.Id, new CancellationToken());
             Assert.NotNull(series);
+        }
+
+        [Test]
+        public async Task Api_Should_Get_StoryList_For_First_Character()
+        {
+            var characters = await _marvel.GetCharacters(new CancellationToken());
+            Assert.AreNotEqual(characters, null);
+            var first = characters.Container.Results.FirstOrDefault();
+            var json = await _marvel.GetCharacterStoriesJson(first.Id, new CancellationToken());
+
+            Assert.NotNull(json);
+
+            var stories = await _marvel.GetCharacterStories(first.Id, new CancellationToken());
+            Assert.NotNull(stories);
         }
 
         [TestCase("", "")]
