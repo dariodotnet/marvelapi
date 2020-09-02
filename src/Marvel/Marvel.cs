@@ -62,10 +62,10 @@
         public Task<MarvelResponse<Serie>> GetCharacterSeries(int characterId, CancellationToken token, SerieQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Serie>>(() => _api.GetCharacterSeries(characterId, parameters, token));
 
-        public Task<string> GetCharacterStoriesJson(int characterId, CancellationToken token, StoryQueryParameter parameters = null) =>
+        public Task<string> GetCharacterStoriesJson(int characterId, CancellationToken token, StoryByCharacterQueryParameter parameters = null) =>
             ExecuteApiJson(() => _api.GetCharacterStories(characterId, parameters, token));
 
-        public Task<MarvelResponse<Story>> GetCharacterStories(int characterId, CancellationToken token, StoryQueryParameter parameters = null) =>
+        public Task<MarvelResponse<Story>> GetCharacterStories(int characterId, CancellationToken token, StoryByCharacterQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetCharacterStories(characterId, parameters, token));
 
         #endregion
@@ -101,6 +101,12 @@
 
         public Task<MarvelResponse<Event>> GetComicEvents(int comicId, CancellationToken token, EventByComicQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetComicEvents(comicId, parameter, token));
+
+        public Task<string> GetComicStoriesJson(int comicId, CancellationToken token, StoryByComicQueryParameter parameter = null) =>
+            ExecuteApiJson(() => _api.GetComicStories(comicId, parameter, token));
+
+        public Task<MarvelResponse<Story>> GetComicStories(int comicId, CancellationToken token, StoryByComicQueryParameter parameter = null) =>
+            ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetComicStories(comicId, parameter, token));
 
         #endregion
 

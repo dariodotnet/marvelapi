@@ -4,19 +4,13 @@ namespace Marvel.Model
     using System;
     using System.Linq;
 
-    public class StoryQueryParameter
+    public class StoryBaseQueryParameter
     {
         public DateTime ModifiedSinceDateTime { get; set; }
 
         [AliasAs("modifiedSince")]
         public string ModifiedSince => ModifiedSinceDateTime != default
             ? ModifiedSinceDateTime.ToString("YYYY-MM-DD") : null;
-
-        public int[] ComicArray { get; set; }
-
-        [AliasAs("comics")]
-        public string Comics => ComicArray != null && ComicArray.Any()
-            ? string.Join(",", ComicArray) : null;
 
         public int[] SerieArray { get; set; }
 

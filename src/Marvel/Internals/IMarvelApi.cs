@@ -24,7 +24,7 @@
         Task<HttpResponseMessage> GetCharacterSeries(int characterId, SerieQueryParameter parameters, CancellationToken token);
 
         [Get("/characters/{characterId}/stories")]
-        Task<HttpResponseMessage> GetCharacterStories(int characterId, StoryQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCharacterStories(int characterId, StoryByCharacterQueryParameter parameters, CancellationToken token);
 
 
         [Get("/comics")]
@@ -41,5 +41,8 @@
 
         [Get("/comics/{comicId}/events")]
         Task<HttpResponseMessage> GetComicEvents(int comicId, EventByComicQueryParameter parameter, CancellationToken token);
+
+        [Get("/comics/{comicId}/stories")]
+        Task<HttpResponseMessage> GetComicStories(int comicId, StoryByComicQueryParameter parameter, CancellationToken token);
     }
 }
