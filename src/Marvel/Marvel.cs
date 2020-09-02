@@ -50,10 +50,10 @@
         public Task<MarvelResponse<Comic>> GetCharacterComics(int characterId, CancellationToken token, ComicByCharacterQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetCharacterComics(characterId, parameter, token));
 
-        public Task<string> GetCharacterEventsJson(int characterId, CancellationToken token, EventQueryParameter parameter = null) =>
+        public Task<string> GetCharacterEventsJson(int characterId, CancellationToken token, EventByCharacterQueryParameter parameter = null) =>
             ExecuteApiJson(() => _api.GetCharacterEvents(characterId, parameter, token));
 
-        public Task<MarvelResponse<Event>> GetCharacterEvents(int characterId, CancellationToken token, EventQueryParameter parameter = null) =>
+        public Task<MarvelResponse<Event>> GetCharacterEvents(int characterId, CancellationToken token, EventByCharacterQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetCharacterEvents(characterId, parameter, token));
 
         public Task<string> GetCharacterSeriesJson(int characterId, CancellationToken token, SerieQueryParameter parameters = null) =>
@@ -96,9 +96,13 @@
         public Task<MarvelResponse<Creator>> GetComicCreators(int comicId, CancellationToken token, CreatorQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetComicCreators(comicId, parameter, token));
 
+        public Task<string> GetComicEventsJson(int comicId, CancellationToken token, EventByComicQueryParameter parameter = null) =>
+            ExecuteApiJson(() => _api.GetComicEvents(comicId, parameter, token));
+
+        public Task<MarvelResponse<Event>> GetComicEvents(int comicId, CancellationToken token, EventByComicQueryParameter parameter = null) =>
+            ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetComicEvents(comicId, parameter, token));
+
         #endregion
-
-
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {
