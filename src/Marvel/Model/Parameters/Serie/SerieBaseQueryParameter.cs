@@ -5,7 +5,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class SerieQueryParameter
+    public class SerieBaseQueryParameter
     {
         [AliasAs("title")]
         public string Title { get; set; }
@@ -21,30 +21,6 @@
         [AliasAs("modifiedSince")]
         public string ModifiedSince => ModifiedSinceDateTime != default
             ? ModifiedSinceDateTime.ToString("YYYY-MM-DD") : null;
-
-        public int[] ComicArray { get; set; }
-
-        [AliasAs("comics")]
-        public string Comics => ComicArray != null && ComicArray.Any()
-            ? string.Join(",", ComicArray) : null;
-
-        public int[] StoryArray { get; set; }
-
-        [AliasAs("stories")]
-        public string Stories => StoryArray != null && StoryArray.Any()
-            ? string.Join(",", StoryArray) : null;
-
-        public int[] EventArray { get; set; }
-
-        [AliasAs("events")]
-        public string Events => EventArray != null && EventArray.Any()
-            ? string.Join(",", EventArray) : null;
-
-        public int[] CreatorsArray { get; set; }
-
-        [AliasAs("creators")]
-        public string Creators => CreatorsArray != null && CreatorsArray.Any()
-            ? string.Join(",", CreatorsArray) : null;
 
         public ParameterSeriesType SeriesType { get; set; }
 
@@ -123,7 +99,7 @@
 
             return result;
         }
-        
+
         private string SetOrder(ParameterSeriesOrder seriesOrder)
         {
             switch (seriesOrder)

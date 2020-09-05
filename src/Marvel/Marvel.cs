@@ -56,10 +56,10 @@
         public Task<MarvelResponse<Event>> GetCharacterEvents(int characterId, CancellationToken token, EventByCharacterQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetCharacterEvents(characterId, parameter, token));
 
-        public Task<string> GetCharacterSeriesJson(int characterId, CancellationToken token, SerieQueryParameter parameters = null) =>
+        public Task<string> GetCharacterSeriesJson(int characterId, CancellationToken token, SerieByCharacterQueryParameter parameters = null) =>
             ExecuteApiJson(() => _api.GetCharacterSeries(characterId, parameters, token));
 
-        public Task<MarvelResponse<Serie>> GetCharacterSeries(int characterId, CancellationToken token, SerieQueryParameter parameters = null) =>
+        public Task<MarvelResponse<Serie>> GetCharacterSeries(int characterId, CancellationToken token, SerieByCharacterQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Serie>>(() => _api.GetCharacterSeries(characterId, parameters, token));
 
         public Task<string> GetCharacterStoriesJson(int characterId, CancellationToken token, StoryByCharacterQueryParameter parameters = null) =>
@@ -135,6 +135,12 @@
 
         public Task<MarvelResponse<Event>> GetCreatorEvents(int creatorId, CancellationToken token, EventByComicQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetCreatorEvents(creatorId, parameters, token));
+
+        public Task<string> GetCreatorSeriesJson(int creatorId, CancellationToken token, SerieByCreatorQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetCreatorSeries(creatorId, parameters, token));
+
+        public Task<MarvelResponse<Serie>> GetCreatorSeries(int creatorId, CancellationToken token, SerieByCreatorQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Serie>>(() => _api.GetCreatorSeries(creatorId, parameters, token));
 
         public Task<string> GetCreatorStoriesJson(int creatorId, CancellationToken token, StoryByCreatorQueryParameter parameters = null) =>
             ExecuteApiJson(() => _api.GetCreatorStories(creatorId, parameters, token));

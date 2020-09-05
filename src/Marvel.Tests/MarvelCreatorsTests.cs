@@ -69,6 +69,20 @@ namespace Marvel.Tests
         }
 
         [Test]
+        public async Task Api_Should_Get_Series_For_First_Creator()
+        {
+            var creators = await _marvel.GetCreators(new CancellationToken());
+            Assert.NotNull(creators);
+            var creator = creators.Container.Results.FirstOrDefault();
+            Assert.NotNull(creator);
+            var json = await _marvel.GetCreatorSeriesJson(creator.Id, new CancellationToken());
+            Assert.NotNull(json);
+
+            var model = await _marvel.GetCreatorSeries(creator.Id, new CancellationToken());
+            Assert.NotNull(model);
+        }
+
+        [Test]
         public async Task Api_Should_Get_Stories_For_First_Creator()
         {
             var creators = await _marvel.GetCreators(new CancellationToken());
