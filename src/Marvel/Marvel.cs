@@ -164,6 +164,12 @@
         public Task<MarvelResponse<Event>> GetEvent(int eventId, CancellationToken token) =>
             ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetEvent(eventId, token));
 
+        public Task<string> GetEventCharactersJson(int eventId, CancellationToken token, CharacterByEventQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetEventCharacters(eventId, parameters, token));
+
+        public Task<MarvelResponse<Character>> GetEventCharacters(int eventId, CancellationToken token, CharacterByEventQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetEventCharacters(eventId, parameters, token));
+
         #endregion
 
         #region INTERNALS

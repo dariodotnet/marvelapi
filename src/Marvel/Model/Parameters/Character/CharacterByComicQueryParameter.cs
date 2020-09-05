@@ -3,14 +3,8 @@
     using Refit;
     using System.Linq;
 
-    public class CharacterQueryParameter : CharacterBaseQueryParameter
+    public class CharacterByComicQueryParameter
     {
-        public int[] ComicArray { get; set; }
-
-        [AliasAs("comics")]
-        public string Comics => ComicArray != null && ComicArray.Any()
-            ? string.Join(",", ComicArray) : null;
-
         public int[] SerieArray { get; set; }
 
         [AliasAs("series")]
@@ -27,6 +21,6 @@
 
         [AliasAs("stories")]
         public string Stories => StoryArray != null && StoryArray.Any()
-            ? string.Join(",", StoryArray) : null;
+           ? string.Join(",", StoryArray) : null;
     }
 }

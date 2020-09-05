@@ -3,7 +3,7 @@
     using Refit;
     using System.Linq;
 
-    public class CharacterQueryParameter : CharacterBaseQueryParameter
+    public class CharacterByEventQueryParameter : CharacterBaseQueryParameter
     {
         public int[] ComicArray { get; set; }
 
@@ -16,12 +16,6 @@
         [AliasAs("series")]
         public string Series => SerieArray != null && SerieArray.Any()
             ? string.Join(",", SerieArray) : null;
-
-        public int[] EventArray { get; set; }
-
-        [AliasAs("events")]
-        public string Events => EventArray != null && EventArray.Any()
-            ? string.Join(",", EventArray) : null;
 
         public int[] StoryArray { get; set; }
 
