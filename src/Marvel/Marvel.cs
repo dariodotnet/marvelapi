@@ -160,6 +160,12 @@
         public Task<MarvelResponse<Serie>> GetEventSeries(int eventId, CancellationToken token, SerieByEventQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Serie>>(() => _api.GetEventSeries(eventId, parameters, token));
 
+        public Task<string> GetEventStoriesJson(int eventId, CancellationToken token, StoryByEventQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetEventStories(eventId, parameters, token));
+
+        public Task<MarvelResponse<Story>> GetEventStories(int eventId, CancellationToken token, StoryByEventQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetEventStories(eventId, parameters, token));
+
         #endregion
 
         #region EVENTS
