@@ -1,15 +1,15 @@
 ﻿namespace Marvel.Model
 {
-    using Refit;
     using System.Linq;
+    using Refit;
 
-    public class EventByCharacterQueryParameter : EventBaseQueryParameter
+    public class EventByCreatorQueryParameter : EventBaseQueryParameter
     {
-        public int[] CreatorsArray { get; set; }
+        public int[] CharacterArray { get; set; }
 
-        [AliasAs("creators")]
-        public string Creators => CreatorsArray != null && CreatorsArray.Any()
-            ? string.Join(",", CreatorsArray) : null;
+        [AliasAs("characters")]
+        public string Characters => CharacterArray != null && CharacterArray.Any()
+            ? string.Join(",", CharacterArray) : null;
 
         public int[] SerieArray { get; set; }
 

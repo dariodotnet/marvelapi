@@ -2,7 +2,6 @@
 {
     using Refit;
     using System;
-    using System.Linq;
 
     public class EventBaseQueryParameter
     {
@@ -17,18 +16,6 @@
         [AliasAs("modifiedSince")]
         public string ModifiedSince => ModifiedSinceDateTime != default
             ? ModifiedSinceDateTime.ToString("YYYY-MM-DD") : null;
-
-        public int[] CreatorsArray { get; set; }
-
-        [AliasAs("creators")]
-        public string Creators => CreatorsArray != null && CreatorsArray.Any()
-            ? string.Join(",", CreatorsArray) : null;
-
-        public int[] StoryArray { get; set; }
-
-        [AliasAs("stories")]
-        public string Stories => StoryArray != null && StoryArray.Any()
-            ? string.Join(",", StoryArray) : null;
 
         public ParameterEventOrder EventOrder { get; set; }
 

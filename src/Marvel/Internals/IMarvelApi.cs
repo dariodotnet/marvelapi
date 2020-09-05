@@ -54,5 +54,8 @@
 
         [Get("/creators/{creatorId}/comics")]
         Task<HttpResponseMessage> GetCreatorComics(int creatorId, ComicByCreatorQueryParameter parameters, CancellationToken token);
+
+        [Get("/creators/{creatorId}/events")]
+        Task<HttpResponseMessage> GetCreatorEvents(int creatorId, EventByComicQueryParameter parameters, CancellationToken token);
     }
 }
