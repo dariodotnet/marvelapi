@@ -124,7 +124,15 @@
         public Task<MarvelResponse<Creator>> GetCreator(int creatorId, CancellationToken token) =>
             ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetCreator(creatorId, token));
 
+        public Task<string> GetCreatorComicsJson(int creatorId, CancellationToken token, ComicByCreatorQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetCreatorComics(creatorId, parameters, token));
+
+        public Task<MarvelResponse<Comic>> GetCreatorComics(int creatorId, CancellationToken token, ComicByCreatorQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetCreatorComics(creatorId, parameters, token));
+
         #endregion
+
+        #region INTERNALS
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {
@@ -143,7 +151,7 @@
                 BaseAddress = new Uri(BaseUri)
             };
 
-            _api = Refit.RestService.For<IMarvelApi>(basicClient);
+            _api = RestService.For<IMarvelApi>(basicClient);
         }
 
         internal Task<string> ExecuteApiJson(Func<Task<HttpResponseMessage>> method)
@@ -170,5 +178,7 @@
                 return await response.Resolve<T>();
             });
         }
+
+        #endregion
     }
 }

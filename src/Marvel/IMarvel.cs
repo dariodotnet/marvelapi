@@ -51,5 +51,8 @@ namespace Marvel
 
         Task<string> GetCreatorJson(int creatorId, CancellationToken token);
         Task<MarvelResponse<Creator>> GetCreator(int creatorId, CancellationToken token);
+
+        Task<string> GetCreatorComicsJson(int creatorId, CancellationToken token, ComicByCreatorQueryParameter parameters = null);
+        Task<MarvelResponse<Comic>> GetCreatorComics(int creatorId, CancellationToken token, ComicByCreatorQueryParameter parameters = null);
     }
 }
