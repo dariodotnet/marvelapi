@@ -150,6 +150,16 @@
 
         #endregion
 
+        #region EVENTS
+
+        public Task<string> GetEventsJson(CancellationToken token, EventQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetEvents(parameters, token));
+
+        public Task<MarvelResponse<Event>> GetEvents(CancellationToken token, EventQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetEvents(parameters, token));
+
+        #endregion
+
         #region INTERNALS
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
