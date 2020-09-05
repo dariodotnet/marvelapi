@@ -90,10 +90,10 @@
         public Task<MarvelResponse<Character>> GetComicCharacters(int comicId, CancellationToken token, CharacterByComicQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetComicCharacters(comicId, parameter, token));
 
-        public Task<string> GetComicCreatorsJson(int comicId, CancellationToken token, CreatorQueryParameter parameter = null) =>
+        public Task<string> GetComicCreatorsJson(int comicId, CancellationToken token, CreatorByComicQueryParameter parameter = null) =>
             ExecuteApiJson(() => _api.GetComicCreators(comicId, parameter, token));
 
-        public Task<MarvelResponse<Creator>> GetComicCreators(int comicId, CancellationToken token, CreatorQueryParameter parameter = null) =>
+        public Task<MarvelResponse<Creator>> GetComicCreators(int comicId, CancellationToken token, CreatorByComicQueryParameter parameter = null) =>
             ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetComicCreators(comicId, parameter, token));
 
         public Task<string> GetComicEventsJson(int comicId, CancellationToken token, EventByComicQueryParameter parameter = null) =>
@@ -112,10 +112,10 @@
 
         #region CREATORS
 
-        public Task<string> GetCreatorsJson(CancellationToken token, CreatorQueryParameter parameters = null) =>
+        public Task<string> GetCreatorsJson(CancellationToken token, CreatorByComicQueryParameter parameters = null) =>
             ExecuteApiJson(() => _api.GetCreators(parameters, token));
 
-        public Task<MarvelResponse<Creator>> GetCreators(CancellationToken token, CreatorQueryParameter parameters = null) =>
+        public Task<MarvelResponse<Creator>> GetCreators(CancellationToken token, CreatorByComicQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetCreators(parameters, token));
 
         public Task<string> GetCreatorJson(int creatorId, CancellationToken token) =>
@@ -147,6 +147,12 @@
 
         public Task<MarvelResponse<Story>> GetCreatorStories(int creatorId, CancellationToken token, StoryByCreatorQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetCreatorStories(creatorId, parameters, token));
+
+        public Task<string> GetEventCreatorsJson(int eventId, CancellationToken token, CreatorByEventQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetEventCreators(eventId, parameters, token));
+
+        public Task<MarvelResponse<Creator>> GetEventCreators(int eventId, CancellationToken token, CreatorByEventQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetEventCreators(eventId, parameters, token));
 
         #endregion
 
