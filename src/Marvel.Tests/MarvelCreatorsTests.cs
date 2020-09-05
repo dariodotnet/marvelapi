@@ -17,7 +17,7 @@ namespace Marvel.Tests
         [Test]
         public async Task Api_Should_Connect_And_Get_Creators()
         {
-            var json = await _marvel.GetCreators(new CancellationToken());
+            var json = await _marvel.GetCreatorsJson(new CancellationToken());
 
             Assert.NotNull(json);
 
