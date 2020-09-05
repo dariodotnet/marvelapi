@@ -66,5 +66,8 @@ namespace Marvel
 
         Task<string> GetEventsJson(CancellationToken token, EventQueryParameter parameters = null);
         Task<MarvelResponse<Event>> GetEvents(CancellationToken token, EventQueryParameter parameters = null);
+
+        Task<string> GetEventJson(int eventId, CancellationToken token);
+        Task<MarvelResponse<Event>> GetEvent(int eventId, CancellationToken token);
     }
 }

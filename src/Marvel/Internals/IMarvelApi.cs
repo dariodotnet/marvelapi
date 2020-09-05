@@ -67,5 +67,8 @@
 
         [Get("/events")]
         Task<HttpResponseMessage> GetEvents(EventQueryParameter parameters, CancellationToken token);
+
+        [Get("/events/{eventId}")]
+        Task<HttpResponseMessage> GetEvent(int eventId, CancellationToken token);
     }
 }

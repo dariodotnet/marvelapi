@@ -158,6 +158,12 @@
         public Task<MarvelResponse<Event>> GetEvents(CancellationToken token, EventQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetEvents(parameters, token));
 
+        public Task<string> GetEventJson(int eventId, CancellationToken token) =>
+            ExecuteApiJson(() => _api.GetEvent(eventId, token));
+
+        public Task<MarvelResponse<Event>> GetEvent(int eventId, CancellationToken token) =>
+            ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetEvent(eventId, token));
+
         #endregion
 
         #region INTERNALS
