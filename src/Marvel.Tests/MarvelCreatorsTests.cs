@@ -1,6 +1,7 @@
 namespace Marvel.Tests
 {
     using NUnit.Framework;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,6 +25,19 @@ namespace Marvel.Tests
             var creators = await _marvel.GetCreators(new CancellationToken());
 
             Assert.NotNull(creators);
+        }
+
+        [Test]
+        public async Task Api_Should_Get_First_Creator()
+        {
+            var creators = await _marvel.GetCreators(new CancellationToken());
+            Assert.NotNull(creators);
+            var creator = creators.Container.Results.FirstOrDefault();
+            Assert.NotNull(creator);
+            var json = await _marvel.GetCreatorJson(creator.Id, new CancellationToken());
+            Assert.NotNull(json);
+            var model = await _marvel.GetCreator(creator.Id, new CancellationToken());
+            Assert.NotNull(model);
         }
     }
 }

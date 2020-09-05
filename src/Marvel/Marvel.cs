@@ -118,6 +118,12 @@
         public Task<MarvelResponse<Creator>> GetCreators(CancellationToken token, CreatorQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetCreators(parameters, token));
 
+        public Task<string> GetCreatorJson(int creatorId, CancellationToken token) =>
+            ExecuteApiJson(() => _api.GetCreator(creatorId, token));
+
+        public Task<MarvelResponse<Creator>> GetCreator(int creatorId, CancellationToken token) =>
+            ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetCreator(creatorId, token));
+
         #endregion
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
