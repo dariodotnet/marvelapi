@@ -24,7 +24,16 @@
         public string FullName { get; set; }
 
         [JsonProperty("modified")]
-        public DateTime Modified { get; set; }
+        public string ModifiedString { get; set; }
+
+        public DateTime Modified => GetModified(ModifiedString);
+
+        private DateTime GetModified(string modifiedString)
+        {
+            DateTime result;
+            DateTime.TryParse(modifiedString, out result);
+            return result;
+        }
 
         [JsonProperty("thumbnail")]
         public Thumbnail Thumbnail { get; set; }
