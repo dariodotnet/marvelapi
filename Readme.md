@@ -1,2 +1,2 @@
-This nuget allow your to play with the Marvel [api](https://developer.marvel.com/docs)
+This nuget allow you to play with the Marvel [api](https://developer.marvel.com/docs)
 
