@@ -79,5 +79,8 @@
 
         [Get("/events/{eventId}/creators")]
         Task<HttpResponseMessage> GetEventCreators(int eventId, CreatorByEventQueryParameter parameters, CancellationToken token);
+
+        [Get("/events/{eventId}/series")]
+        Task<HttpResponseMessage> GetEventSeries(int eventId, SerieByEventQueryParameter parameters, CancellationToken token);
     }
 }
