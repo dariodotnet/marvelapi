@@ -73,5 +73,8 @@
 
         [Get("/events/{eventId}/characters")]
         Task<HttpResponseMessage> GetEventCharacters(int eventId, CharacterByEventQueryParameter parameters, CancellationToken token);
+
+        [Get("/events/{eventId}/comics")]
+        Task<HttpResponseMessage> GetEventComics(int eventId, ComicByEventQueryParameter parameters, CancellationToken token);
     }
 }

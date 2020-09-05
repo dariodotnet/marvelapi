@@ -170,6 +170,12 @@
         public Task<MarvelResponse<Character>> GetEventCharacters(int eventId, CancellationToken token, CharacterByEventQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetEventCharacters(eventId, parameters, token));
 
+        public Task<string> GetEventComicsJson(int eventId, CancellationToken token, ComicByEventQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetEventComics(eventId, parameters, token));
+
+        public Task<MarvelResponse<Comic>> GetEventComics(int eventId, CancellationToken token, ComicByEventQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetEventComics(eventId, parameters, token));
+
         #endregion
 
         #region INTERNALS
