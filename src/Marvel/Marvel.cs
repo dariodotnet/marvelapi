@@ -110,6 +110,16 @@
 
         #endregion
 
+        #region CREATORS
+
+        public Task<string> GetCreatorsJson(CancellationToken token, CreatorQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetCreators(parameters, token));
+
+        public Task<MarvelResponse<Creator>> GetCreators(CancellationToken token, CreatorQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetCreators(parameters, token));
+
+        #endregion
+
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
         {
             HttpClientHandler innerHandler = null;
