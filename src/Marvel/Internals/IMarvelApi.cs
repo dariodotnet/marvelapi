@@ -107,5 +107,9 @@
 
         [Get("/series/{serieId}/stories")]
         Task<HttpResponseMessage> GetSerieStories(int serieId, StoryBySerieQueryParameter parameters, CancellationToken token);
+
+
+        [Get("/stories")]
+        Task<HttpResponseMessage> GetStories(StoryQueryParameter parameters, CancellationToken token);
     }
 }

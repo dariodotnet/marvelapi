@@ -242,6 +242,16 @@
 
         #endregion
 
+        #region STORIES
+
+        public Task<string> GetStoriesJson(CancellationToken token, StoryQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetStories(parameters, token));
+
+        public Task<MarvelResponse<Story>> GetStories(CancellationToken token, StoryQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetStories(parameters, token));
+
+        #endregion
+
         #region INTERNALS
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)
