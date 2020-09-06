@@ -114,5 +114,8 @@ namespace Marvel
 
         Task<string> GetStoryCharactersJson(int storyId, CancellationToken token, CharactersByStoryQueryParameters parameters = null);
         Task<MarvelResponse<Character>> GetStoryCharacters(int storyId, CancellationToken token, CharactersByStoryQueryParameters parameters = null);
+
+        Task<string> GetStoryComicsJson(int storyId, CancellationToken token, ComicsByStoryQueryParameters parameters = null);
+        Task<MarvelResponse<Comic>> GetStoryComics(int storyId, CancellationToken token, ComicsByStoryQueryParameters parameters = null);
     }
 }

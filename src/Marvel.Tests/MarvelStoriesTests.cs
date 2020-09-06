@@ -54,5 +54,20 @@ namespace Marvel.Tests
             var model = await _marvel.GetStoryCharacters(story.Id, new CancellationToken());
             Assert.NotNull(model);
         }
+
+        [Test]
+        public async Task Api_Should_Get_Comics_For_First_Story()
+        {
+            var stories = await _marvel.GetStories(new CancellationToken());
+            Assert.NotNull(stories);
+            var story = stories.Container.Results.FirstOrDefault();
+            Assert.NotNull(story);
+
+            var json = await _marvel.GetStoryComicsJson(story.Id, new CancellationToken());
+            Assert.NotNull(json);
+
+            var model = await _marvel.GetStoryComics(story.Id, new CancellationToken());
+            Assert.NotNull(model);
+        }
     }
 }
