@@ -95,5 +95,8 @@
 
         [Get("/series/{serieId}/characters")]
         Task<HttpResponseMessage> GetSerieCharacters(int serieId, CharacterBySerieQueryParameter parameters, CancellationToken token);
+
+        [Get("/series/{serieId}/comics")]
+        Task<HttpResponseMessage> GetSerieComics(int serieId, ComicBySerieQueryParameter parameters, CancellationToken token);
     }
 }
