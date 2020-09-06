@@ -101,5 +101,8 @@
 
         [Get("/series/{serieId}/creators")]
         Task<HttpResponseMessage> GetSerieCreators(int serieId, CreatorBySerieQueryParameter parameters, CancellationToken token);
+
+        [Get("/series/{serieId}/events")]
+        Task<HttpResponseMessage> GetSerieEvents(int serieId, EventsBySerieQueryParameter parameters, CancellationToken token);
     }
 }

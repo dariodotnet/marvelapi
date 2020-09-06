@@ -99,5 +99,8 @@ namespace Marvel
 
         Task<string> GetSerieCreatorsJson(int serieId, CancellationToken token, CreatorBySerieQueryParameter parameters = null);
         Task<MarvelResponse<Creator>> GetSerieCreators(int serieId, CancellationToken token, CreatorBySerieQueryParameter parameters = null);
+
+        Task<string> GetSerieEventsJson(int serieId, CancellationToken token, EventsBySerieQueryParameter parameters = null);
+        Task<MarvelResponse<Event>> GetSerieEvents(int serieId, CancellationToken token, EventsBySerieQueryParameter parameters = null);
     }
 }
