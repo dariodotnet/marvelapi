@@ -120,5 +120,8 @@
 
         [Get("/stories/{storyId}/comics")]
         Task<HttpResponseMessage> GetStoryComics(int storyId, ComicsByStoryQueryParameters parameters, CancellationToken token);
+
+        [Get("/stories/{storyId}/creators")]
+        Task<HttpResponseMessage> GetStoryCreators(int storyId, CreatorsByStoryQueryParameters parameters, CancellationToken token);
     }
 }
