@@ -3,7 +3,7 @@ namespace Marvel.Model
     using Refit;
     using System.Linq;
 
-    public class CreatorsByStoryQueryParameters : CreatorsBaseQueryParameters
+    public class CreatorsQueryParameters : CreatorsBaseQueryParameters
     {
         public int[] ComicArray { get; set; }
 
@@ -22,5 +22,11 @@ namespace Marvel.Model
         [AliasAs("events")]
         public string Events => EventArray != null && EventArray.Any()
             ? string.Join(",", EventArray) : null;
+
+        public int[] StoryArray { get; set; }
+
+        [AliasAs("stories")]
+        public string Stories => StoryArray != null && StoryArray.Any()
+            ? string.Join(",", StoryArray) : null;
     }
 }

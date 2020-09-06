@@ -1,9 +1,9 @@
-namespace Marvel.Model
+﻿namespace Marvel.Model
 {
     using Refit;
     using System.Linq;
 
-    public class CreatorsByStoryQueryParameters : CreatorsBaseQueryParameters
+    public class CharactersesByStoryQueryParameterses : CharactersBaseQueryParameters
     {
         public int[] ComicArray { get; set; }
 

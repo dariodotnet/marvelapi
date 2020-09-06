@@ -9,114 +9,114 @@
     internal interface IMarvelApi
     {
         [Get("/characters")]
-        Task<HttpResponseMessage> GetCharacters(CharacterQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCharacters(CharactersQueryParameters parameters, CancellationToken token);
 
         [Get("/characters/{characterId}")]
         Task<HttpResponseMessage> GetCharacter(int characterId, CancellationToken token);
 
         [Get("/characters/{characterId}/comics")]
-        Task<HttpResponseMessage> GetCharacterComics(int characterId, ComicByCharacterQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCharacterComics(int characterId, ComicsByCharacterQueryParameters parameters, CancellationToken token);
 
         [Get("/characters/{characterId}/events")]
-        Task<HttpResponseMessage> GetCharacterEvents(int characterId, EventByCharacterQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCharacterEvents(int characterId, EventsByCharacterQueryParameters parameters, CancellationToken token);
 
         [Get("/characters/{characterId}/series")]
-        Task<HttpResponseMessage> GetCharacterSeries(int characterId, SerieByCharacterQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCharacterSeries(int characterId, SeriesByCharacterQueryParameters parameters, CancellationToken token);
 
         [Get("/characters/{characterId}/stories")]
-        Task<HttpResponseMessage> GetCharacterStories(int characterId, StoryByCharacterQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCharacterStories(int characterId, StoriesByCharacterQueryParameters parameters, CancellationToken token);
 
 
         [Get("/comics")]
-        Task<HttpResponseMessage> GetComics(ComicQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetComics(ComicsQueryParameters parameters, CancellationToken token);
 
         [Get("/comics/{comicId}")]
         Task<HttpResponseMessage> GetComic(int comicId, CancellationToken token);
 
         [Get("/comics/{comicId}/characters")]
-        Task<HttpResponseMessage> GetComicCharacters(int comicId, CharacterByComicQueryParameter parameter, CancellationToken token);
+        Task<HttpResponseMessage> GetComicCharacters(int comicId, CharactersByComicQueryParameters parameters, CancellationToken token);
 
         [Get("/comics/{comicId}/creators")]
-        Task<HttpResponseMessage> GetComicCreators(int comicId, CreatorByComicQueryParameter parameter, CancellationToken token);
+        Task<HttpResponseMessage> GetComicCreators(int comicId, CreatorsByComicQueryParameters parameters, CancellationToken token);
 
         [Get("/comics/{comicId}/events")]
-        Task<HttpResponseMessage> GetComicEvents(int comicId, EventByComicQueryParameter parameter, CancellationToken token);
+        Task<HttpResponseMessage> GetComicEvents(int comicId, EventsByComicQueryParameters parameters, CancellationToken token);
 
         [Get("/comics/{comicId}/stories")]
-        Task<HttpResponseMessage> GetComicStories(int comicId, StoryByComicQueryParameter parameter, CancellationToken token);
+        Task<HttpResponseMessage> GetComicStories(int comicId, StoriesByComicQueryParameters parameters, CancellationToken token);
 
 
         [Get("/creators")]
-        Task<HttpResponseMessage> GetCreators(CreatorQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCreators(CreatorsQueryParameters parameters, CancellationToken token);
 
         [Get("/creators/{creatorId}")]
         Task<HttpResponseMessage> GetCreator(int creatorId, CancellationToken token);
 
         [Get("/creators/{creatorId}/comics")]
-        Task<HttpResponseMessage> GetCreatorComics(int creatorId, ComicByCreatorQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCreatorComics(int creatorId, ComicsByCreatorQueryParameters parameters, CancellationToken token);
 
         [Get("/creators/{creatorId}/events")]
-        Task<HttpResponseMessage> GetCreatorEvents(int creatorId, EventByComicQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCreatorEvents(int creatorId, EventsByComicQueryParameters parameters, CancellationToken token);
 
         [Get("/creators/{creatorId}/series")]
-        Task<HttpResponseMessage> GetCreatorSeries(int creatorId, SerieByCreatorQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCreatorSeries(int creatorId, SeriesByCreatorQueryParameters parameters, CancellationToken token);
 
         [Get("/creators/{creatorId}/stories")]
-        Task<HttpResponseMessage> GetCreatorStories(int creatorId, StoryByCreatorQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCreatorStories(int creatorId, StoriesByCreatorQueryParameters parameters, CancellationToken token);
 
 
         [Get("/events")]
-        Task<HttpResponseMessage> GetEvents(EventQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetEvents(EventsQueryParameters parameters, CancellationToken token);
 
         [Get("/events/{eventId}")]
         Task<HttpResponseMessage> GetEvent(int eventId, CancellationToken token);
 
         [Get("/events/{eventId}/characters")]
-        Task<HttpResponseMessage> GetEventCharacters(int eventId, CharacterByEventQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetEventCharacters(int eventId, CharactersByEventQueryParameters parameters, CancellationToken token);
 
         [Get("/events/{eventId}/comics")]
-        Task<HttpResponseMessage> GetEventComics(int eventId, ComicByEventQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetEventComics(int eventId, ComicsByEventQueryParameters parameters, CancellationToken token);
 
         [Get("/events/{eventId}/creators")]
-        Task<HttpResponseMessage> GetEventCreators(int eventId, CreatorByEventQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetEventCreators(int eventId, CreatorsByEventQueryParameters parameters, CancellationToken token);
 
         [Get("/events/{eventId}/series")]
-        Task<HttpResponseMessage> GetEventSeries(int eventId, SerieByEventQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetEventSeries(int eventId, SeriesByEventQueryParameters parameters, CancellationToken token);
 
         [Get("/events/{eventId}/stories")]
-        Task<HttpResponseMessage> GetEventStories(int eventId, StoryByEventQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetEventStories(int eventId, StoriesByEventQueryParameters parameters, CancellationToken token);
 
 
         [Get("/series")]
-        Task<HttpResponseMessage> GetSeries(SerieQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetSeries(SeriesQueryParameters parameters, CancellationToken token);
 
         [Get("/series/{serieId}")]
         Task<HttpResponseMessage> GetSerie(int serieId, CancellationToken token);
 
         [Get("/series/{serieId}/characters")]
-        Task<HttpResponseMessage> GetSerieCharacters(int serieId, CharacterBySerieQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetSerieCharacters(int serieId, CharactersBySerieQueryParameters parameters, CancellationToken token);
 
         [Get("/series/{serieId}/comics")]
-        Task<HttpResponseMessage> GetSerieComics(int serieId, ComicBySerieQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetSerieComics(int serieId, ComicsBySerieQueryParameters parameters, CancellationToken token);
 
         [Get("/series/{serieId}/creators")]
-        Task<HttpResponseMessage> GetSerieCreators(int serieId, CreatorBySerieQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetSerieCreators(int serieId, CreatorsBySerieQueryParameters parameters, CancellationToken token);
 
         [Get("/series/{serieId}/events")]
-        Task<HttpResponseMessage> GetSerieEvents(int serieId, EventsBySerieQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetSerieEvents(int serieId, EventsesBySerieQueryParameters parameters, CancellationToken token);
 
         [Get("/series/{serieId}/stories")]
-        Task<HttpResponseMessage> GetSerieStories(int serieId, StoryBySerieQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetSerieStories(int serieId, StoriesBySerieQueryParameters parameters, CancellationToken token);
 
 
         [Get("/stories")]
-        Task<HttpResponseMessage> GetStories(StoryQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetStories(StoriesQueryParameters parameters, CancellationToken token);
 
         [Get("/stories/{storyId}")]
         Task<HttpResponseMessage> GetStory(int storyId, CancellationToken token);
 
         [Get("/stories/{storyId}/characters")]
-        Task<HttpResponseMessage> GetStoryCharacters(int storyId, CharactersByStoryQueryParameters parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetStoryCharacters(int storyId, CharactersesByStoryQueryParameterses parameters, CancellationToken token);
 
         [Get("/stories/{storyId}/comics")]
         Task<HttpResponseMessage> GetStoryComics(int storyId, ComicsByStoryQueryParameters parameters, CancellationToken token);
@@ -126,5 +126,8 @@
 
         [Get("/stories/{storyId}/events")]
         Task<HttpResponseMessage> GetStoryEvents(int storyId, EventsByStoryQueryParameters parameters, CancellationToken token);
+
+        [Get("/stories/{storyId}/series")]
+        Task<HttpResponseMessage> GetStorySeries(int storyId, SeriesByStoryQueryParameters parameters, CancellationToken token);
     }
 }

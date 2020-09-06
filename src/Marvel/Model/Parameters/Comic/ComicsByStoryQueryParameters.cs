@@ -3,7 +3,7 @@
     using Refit;
     using System.Linq;
 
-    public class ComicsByStoryQueryParameters : ComicBaseQueryParameter
+    public class ComicsByStoryQueryParameters : ComicsBaseQueryParameters
     {
         public int[] CreatorsArray { get; set; }
 

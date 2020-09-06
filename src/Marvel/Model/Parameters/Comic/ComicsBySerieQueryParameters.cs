@@ -3,7 +3,7 @@
     using Refit;
     using System.Linq;
 
-    public class EventsByStoryQueryParameters : EventsBaseQueryParameters
+    public class ComicsBySerieQueryParameters : ComicsBaseQueryParameters
     {
         public int[] CreatorsArray { get; set; }
 
@@ -17,16 +17,16 @@
         public string Characters => CharacterArray != null && CharacterArray.Any()
             ? string.Join(",", CharacterArray) : null;
 
-        public int[] SerieArray { get; set; }
+        public int[] EventArray { get; set; }
 
-        [AliasAs("series")]
-        public string Series => SerieArray != null && SerieArray.Any()
-            ? string.Join(",", SerieArray) : null;
+        [AliasAs("events")]
+        public string Events => EventArray != null && EventArray.Any()
+            ? string.Join(",", EventArray) : null;
 
-        public int[] ComicArray { get; set; }
+        public int[] StoryArray { get; set; }
 
-        [AliasAs("comics")]
-        public string Comics => ComicArray != null && ComicArray.Any()
-            ? string.Join(",", ComicArray) : null;
+        [AliasAs("stories")]
+        public string Stories => StoryArray != null && StoryArray.Any()
+            ? string.Join(",", StoryArray) : null;
     }
 }

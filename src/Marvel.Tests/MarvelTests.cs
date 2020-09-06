@@ -239,7 +239,7 @@ namespace Marvel.Tests
         [Test]
         public async Task Api_Should_Throw_MarvelError_LimitError()
         {
-            var parameter = new CharacterQueryParameter { Limit = 250 };
+            var parameter = new CharactersQueryParameters { Limit = 250 };
 
             var exceptionJson = Assert
                 .ThrowsAsync<MarvelException>(async () => await _marvel.GetCharactersJson(new CancellationToken(), parameter));
@@ -257,7 +257,7 @@ namespace Marvel.Tests
         [Test]
         public async Task Api_Should_Throw_MarvelError_LimitZeroError()
         {
-            var parameter = new CharacterQueryParameter { Limit = 0 };
+            var parameter = new CharactersQueryParameters { Limit = 0 };
 
             var exceptionJson = Assert
                 .ThrowsAsync<MarvelException>(async () => await _marvel.GetCharactersJson(new CancellationToken(), parameter));
