@@ -210,6 +210,12 @@
         public Task<MarvelResponse<Serie>> GetSerie(int serieId, CancellationToken token) =>
             ExecuteApiCall<MarvelResponse<Serie>>(() => _api.GetSerie(serieId, token));
 
+        public Task<string> GetSerieCharactersJson(int serieId, CancellationToken token, CharacterBySerieQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetSerieCharacters(serieId, parameters, token));
+
+        public Task<MarvelResponse<Character>> GetSerieCharacters(int serieId, CancellationToken token, CharacterBySerieQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetSerieCharacters(serieId, parameters, token));
+
         #endregion
 
         #region INTERNALS

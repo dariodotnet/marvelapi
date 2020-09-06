@@ -40,79 +40,19 @@ namespace Marvel.Tests
             Assert.NotNull(model);
         }
 
-        //[Test]
-        //public async Task Api_Should_Get_Characters_For_First_Event()
-        //{
-        //    var events = await _marvel.GetEvents(new CancellationToken());
-        //    Assert.NotNull(events);
-        //    var firstEvent = events.Container.Results.FirstOrDefault();
-        //    Assert.NotNull(firstEvent);
+        [Test]
+        public async Task Api_Should_Get_Characters_For_First_Event()
+        {
+            var series = await _marvel.GetSeries(new CancellationToken());
+            Assert.NotNull(series);
+            var serie = series.Container.Results.FirstOrDefault();
+            Assert.NotNull(serie);
 
-        //    var json = await _marvel.GetEventCharactersJson(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(json);
+            var json = await _marvel.GetSerieCharactersJson(serie.Id, new CancellationToken());
+            Assert.NotNull(json);
 
-        //    var model = await _marvel.GetEventCharacters(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(model);
-        //}
-
-        //[Test]
-        //public async Task Api_Should_Get_Comics_For_First_Event()
-        //{
-        //    var events = await _marvel.GetEvents(new CancellationToken());
-        //    Assert.NotNull(events);
-        //    var firstEvent = events.Container.Results.FirstOrDefault();
-        //    Assert.NotNull(firstEvent);
-
-        //    var json = await _marvel.GetEventComicsJson(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(json);
-
-        //    var model = await _marvel.GetEventComics(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(model);
-        //}
-
-        //[Test]
-        //public async Task Api_Should_Get_Creators_For_First_Event()
-        //{
-        //    var events = await _marvel.GetEvents(new CancellationToken());
-        //    Assert.NotNull(events);
-        //    var firstEvent = events.Container.Results.FirstOrDefault();
-        //    Assert.NotNull(firstEvent);
-
-        //    var json = await _marvel.GetEventCreatorsJson(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(json);
-
-        //    var model = await _marvel.GetEventCreators(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(model);
-        //}
-
-        //[Test]
-        //public async Task Api_Should_Get_Series_For_First_Event()
-        //{
-        //    var events = await _marvel.GetEvents(new CancellationToken());
-        //    Assert.NotNull(events);
-        //    var firstEvent = events.Container.Results.FirstOrDefault();
-        //    Assert.NotNull(firstEvent);
-
-        //    var json = await _marvel.GetEventSeriesJson(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(json);
-
-        //    var model = await _marvel.GetEventSeries(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(model);
-        //}
-
-        //[Test]
-        //public async Task Api_Should_Get_Stories_For_First_Event()
-        //{
-        //    var events = await _marvel.GetEvents(new CancellationToken());
-        //    Assert.NotNull(events);
-        //    var firstEvent = events.Container.Results.FirstOrDefault();
-        //    Assert.NotNull(firstEvent);
-
-        //    var json = await _marvel.GetEventStoriesJson(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(json);
-
-        //    var model = await _marvel.GetEventStories(firstEvent.Id, new CancellationToken());
-        //    Assert.NotNull(model);
-        //}
+            var model = await _marvel.GetSerieCharacters(serie.Id, new CancellationToken());
+            Assert.NotNull(model);
+        }
     }
 }
