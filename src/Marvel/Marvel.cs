@@ -196,6 +196,16 @@
 
         #endregion
 
+        #region SERIES
+
+        public Task<string> GetSeriesJson(CancellationToken token, SerieQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetSeries(parameters, token));
+
+        public Task<MarvelResponse<Serie>> GetSeries(CancellationToken token, SerieQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Serie>>(() => _api.GetSeries(parameters, token));
+
+        #endregion
+
         #region INTERNALS
 
         internal void InitializeApi(string publicKey, string privateKey, bool bypassCertificate = false)

@@ -85,5 +85,9 @@
 
         [Get("/events/{eventId}/stories")]
         Task<HttpResponseMessage> GetEventStories(int eventId, StoryByEventQueryParameter parameters, CancellationToken token);
+
+
+        [Get("/series")]
+        Task<HttpResponseMessage> GetSeries(SerieQueryParameter parameters, CancellationToken token);
     }
 }
