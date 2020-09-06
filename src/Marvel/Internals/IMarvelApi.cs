@@ -123,5 +123,8 @@
 
         [Get("/stories/{storyId}/creators")]
         Task<HttpResponseMessage> GetStoryCreators(int storyId, CreatorsByStoryQueryParameters parameters, CancellationToken token);
+
+        [Get("/stories/{storyId}/events")]
+        Task<HttpResponseMessage> GetStoryEvents(int storyId, EventsByStoryQueryParameters parameters, CancellationToken token);
     }
 }

@@ -120,5 +120,8 @@ namespace Marvel
 
         Task<string> GetStoryCreatorsJson(int storyId, CancellationToken token, CreatorsByStoryQueryParameters parameters = null);
         Task<MarvelResponse<Creator>> GetStoryCreators(int storyId, CancellationToken token, CreatorsByStoryQueryParameters parameters = null);
+
+        Task<string> GetStoryEventsJson(int storyId, CancellationToken token, EventsByStoryQueryParameters parameters = null);
+        Task<MarvelResponse<Event>> GetStoryEvents(int storyId, CancellationToken token, EventsByStoryQueryParameters parameters = null);
     }
 }
