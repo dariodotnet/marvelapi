@@ -234,6 +234,12 @@
         public Task<MarvelResponse<Event>> GetSerieEvents(int serieId, CancellationToken token, EventsBySerieQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Event>>(() => _api.GetSerieEvents(serieId, parameters, token));
 
+        public Task<string> GetSerieStoriesJson(int serieId, CancellationToken token, StoryBySerieQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetSerieStories(serieId, parameters, token));
+
+        public Task<MarvelResponse<Story>> GetSerieStories(int serieId, CancellationToken token, StoryBySerieQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetSerieStories(serieId, parameters, token));
+
         #endregion
 
         #region INTERNALS
