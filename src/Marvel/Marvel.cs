@@ -250,6 +250,12 @@
         public Task<MarvelResponse<Story>> GetStories(CancellationToken token, StoryQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetStories(parameters, token));
 
+        public Task<string> GetStoryJson(int storyId, CancellationToken token) =>
+            ExecuteApiJson(() => _api.GetStory(storyId, token));
+
+        public Task<MarvelResponse<Story>> GetStory(int storyId, CancellationToken token) =>
+            ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetStory(storyId, token));
+
         #endregion
 
         #region INTERNALS

@@ -1,6 +1,7 @@
 namespace Marvel.Tests
 {
     using NUnit.Framework;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -26,18 +27,18 @@ namespace Marvel.Tests
             Assert.NotNull(stories);
         }
 
-        //[Test]
-        //public async Task Api_Should_Get_First_Event()
-        //{
-        //    var events = await _marvel.GetSeries(new CancellationToken());
-        //    Assert.NotNull(events);
-        //    var serie = events.Container.Results.FirstOrDefault();
-        //    Assert.NotNull(serie);
-        //    var json = await _marvel.GetSerieJson(serie.Id, new CancellationToken());
-        //    Assert.NotNull(json);
-        //    var model = await _marvel.GetSerie(serie.Id, new CancellationToken());
-        //    Assert.NotNull(model);
-        //}
+        [Test]
+        public async Task Api_Should_Get_First_Story()
+        {
+            var events = await _marvel.GetStories(new CancellationToken());
+            Assert.NotNull(events);
+            var story = events.Container.Results.FirstOrDefault();
+            Assert.NotNull(story);
+            var json = await _marvel.GetStoryJson(story.Id, new CancellationToken());
+            Assert.NotNull(json);
+            var model = await _marvel.GetStory(story.Id, new CancellationToken());
+            Assert.NotNull(model);
+        }
 
         //[Test]
         //public async Task Api_Should_Get_Characters_For_First_Event()
