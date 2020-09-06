@@ -112,10 +112,10 @@
 
         #region CREATORS
 
-        public Task<string> GetCreatorsJson(CancellationToken token, CreatorByComicQueryParameter parameters = null) =>
+        public Task<string> GetCreatorsJson(CancellationToken token, CreatorQueryParameter parameters = null) =>
             ExecuteApiJson(() => _api.GetCreators(parameters, token));
 
-        public Task<MarvelResponse<Creator>> GetCreators(CancellationToken token, CreatorByComicQueryParameter parameters = null) =>
+        public Task<MarvelResponse<Creator>> GetCreators(CancellationToken token, CreatorQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetCreators(parameters, token));
 
         public Task<string> GetCreatorJson(int creatorId, CancellationToken token) =>
@@ -221,6 +221,12 @@
 
         public Task<MarvelResponse<Comic>> GetSerieComics(int serieId, CancellationToken token, ComicBySerieQueryParameter parameters = null) =>
             ExecuteApiCall<MarvelResponse<Comic>>(() => _api.GetSerieComics(serieId, parameters, token));
+
+        public Task<string> GetSerieCreatorsJson(int serieId, CancellationToken token, CreatorBySerieQueryParameter parameters = null) =>
+            ExecuteApiJson(() => _api.GetSerieCreators(serieId, parameters, token));
+
+        public Task<MarvelResponse<Creator>> GetSerieCreators(int serieId, CancellationToken token, CreatorBySerieQueryParameter parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Creator>>(() => _api.GetSerieCreators(serieId, parameters, token));
 
         #endregion
 

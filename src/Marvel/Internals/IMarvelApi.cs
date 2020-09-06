@@ -47,7 +47,7 @@
 
 
         [Get("/creators")]
-        Task<HttpResponseMessage> GetCreators(CreatorByComicQueryParameter parameters, CancellationToken token);
+        Task<HttpResponseMessage> GetCreators(CreatorQueryParameter parameters, CancellationToken token);
 
         [Get("/creators/{creatorId}")]
         Task<HttpResponseMessage> GetCreator(int creatorId, CancellationToken token);
@@ -98,5 +98,8 @@
 
         [Get("/series/{serieId}/comics")]
         Task<HttpResponseMessage> GetSerieComics(int serieId, ComicBySerieQueryParameter parameters, CancellationToken token);
+
+        [Get("/series/{serieId}/creators")]
+        Task<HttpResponseMessage> GetSerieCreators(int serieId, CreatorBySerieQueryParameter parameters, CancellationToken token);
     }
 }
