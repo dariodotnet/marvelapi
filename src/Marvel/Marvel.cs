@@ -256,6 +256,12 @@
         public Task<MarvelResponse<Story>> GetStory(int storyId, CancellationToken token) =>
             ExecuteApiCall<MarvelResponse<Story>>(() => _api.GetStory(storyId, token));
 
+        public Task<string> GetStoryCharactersJson(int storyId, CancellationToken token, CharactersByStoryQueryParameters parameters = null) =>
+            ExecuteApiJson(() => _api.GetStoryCharacters(storyId, parameters, token));
+
+        public Task<MarvelResponse<Character>> GetStoryCharacters(int storyId, CancellationToken token, CharactersByStoryQueryParameters parameters = null) =>
+            ExecuteApiCall<MarvelResponse<Character>>(() => _api.GetStoryCharacters(storyId, parameters, token));
+
         #endregion
 
         #region INTERNALS
